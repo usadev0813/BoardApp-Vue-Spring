@@ -1,0 +1,9 @@
+### 1. 유저 생성
+POST {{base}}/user/create
+Content-Type: application/json
+
+{
+  "userId": "usadev0813",
+  "password": "1234",
+  "name": "유사개발자"
+}

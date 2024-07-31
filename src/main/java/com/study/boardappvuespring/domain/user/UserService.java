@@ -1,4 +1,5 @@
 package com.study.boardappvuespring.domain.user;
 
-public class UserService {
+public interface UserService {
+    void createUser(UserCommand.CreateUser user);
 }
