@@ -1,0 +1,9 @@
+### 1. 게시물 생성
+POST {{base}}/post/register
+Content-Type: application/json
+
+{
+  "writerId": "usadev0813",
+  "title": "테스트 제목",
+  "content": "테스트 게시물 내용"
+}

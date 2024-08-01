@@ -1,6 +1,5 @@
 package com.study.boardappvuespring.domain.user;
 
-import com.study.boardappvuespring.infrastructure.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,10 +7,12 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserStore userStore;
+    private final UserInfoMapper userInfoMapper;
+
 
     @Override
-    public void createUser(UserCommand.CreateUser command) {
+    public UserInfo.RegisterResponse registerUser(UserCommand.RegisterUser command) {
         User user = command.toEntity();
-        userStore.store(user);
+        return userInfoMapper.of(userStore.store(user));
     }
 }

@@ -1,6 +1,7 @@
 package com.study.boardappvuespring.application.user;
 
 import com.study.boardappvuespring.domain.user.UserCommand;
+import com.study.boardappvuespring.domain.user.UserInfo;
 import com.study.boardappvuespring.domain.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class UserFacade {
     private final UserService userService;
 
-    public void createUser(UserCommand.CreateUser request) {
-        userService.createUser(request);
+    public UserInfo.RegisterResponse registerUser(UserCommand.RegisterUser request) {
+        return userService.registerUser(request);
     }
 }
