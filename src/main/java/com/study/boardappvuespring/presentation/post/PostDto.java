@@ -1,8 +1,11 @@
 package com.study.boardappvuespring.presentation.post;
 
+import com.study.boardappvuespring.domain.post.Post;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
+
+import java.util.List;
 
 public class PostDto {
     @Getter
@@ -13,4 +16,5 @@ public class PostDto {
         private final String title;
         private final String content;
     }
+
 }

@@ -4,12 +4,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.List;
+
 public class PostInfo {
     @Getter
     @Builder
     @ToString
-    public static class RegisterResponse {
+    public static class Main {
         private final String title;
         private final String content;
     }
+
 }

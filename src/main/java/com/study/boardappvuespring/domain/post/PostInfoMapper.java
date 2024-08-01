@@ -1,11 +1,10 @@
 package com.study.boardappvuespring.domain.post;
 
-import com.study.boardappvuespring.domain.user.User;
-import com.study.boardappvuespring.domain.user.UserInfo;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
+
+import java.util.List;
 
 @Mapper(
         componentModel = "spring",
@@ -13,5 +12,6 @@ import org.mapstruct.ReportingPolicy;
         unmappedTargetPolicy = ReportingPolicy.ERROR
 )
 public interface PostInfoMapper {
-    PostInfo.RegisterResponse of(Post post);
+    PostInfo.Main of(Post post);
+    List<PostInfo.Main> of(List<Post> post);
 }
