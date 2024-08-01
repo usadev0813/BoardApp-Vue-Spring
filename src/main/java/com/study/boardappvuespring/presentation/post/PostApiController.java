@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/post")
+@RequestMapping("/api/posts")
 public class PostApiController {
     private final PostFacade postFacade;
     private final PostDtoMapper postDtoMapper;
@@ -21,14 +21,12 @@ public class PostApiController {
     }
 
     @GetMapping
-    public ApiResponse getPosts(@RequestBody PostDto.RegisterRequest request) {
-        // todo 포스트 전체 조회 기능 구현예정
-        return null;
+    public ApiResponse getPosts() {
+        return ApiResponse.success(postFacade.getPosts());
     }
 
-    @PostMapping("/{postId}")
+    @GetMapping("/{postId}")
     public ApiResponse getPost(@PathVariable("postId") Long postId) {
-        // todo 포스트 단건 조회 기능 구현예정
-        return null;
+        return ApiResponse.success(postFacade.getPost(postId));
     }
 }
