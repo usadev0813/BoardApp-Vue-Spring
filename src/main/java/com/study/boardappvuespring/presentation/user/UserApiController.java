@@ -2,6 +2,7 @@ package com.study.boardappvuespring.presentation.user;
 
 import com.study.boardappvuespring.application.user.UserFacade;
 import com.study.boardappvuespring.common.support.response.ApiResponse;
+import com.study.boardappvuespring.domain.user.UserInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,10 +16,11 @@ public class UserApiController {
     private final UserFacade userFacade;
     private final UserDtoMapper userDtoMapper;
 
-    @PostMapping("/create")
-    public ApiResponse createUser(@RequestBody UserDto.CreateUser request) {
-        var userCommand = userDtoMapper.of(request);
-        userFacade.createUser(userCommand);
-        return ApiResponse.success();
+    @PostMapping("/register")
+    public ApiResponse createUser(@RequestBody UserDto.RegisterRequest request) {
+        var command = userDtoMapper.of(request);
+        var userInfo = userFacade.registerUser(command);
+        var response = userDtoMapper.of(userInfo);
+        return ApiResponse.success(response);
     }
 }

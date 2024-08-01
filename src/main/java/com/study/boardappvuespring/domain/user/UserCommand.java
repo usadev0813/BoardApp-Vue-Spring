@@ -8,7 +8,7 @@ public class UserCommand {
     @Getter
     @Builder
     @ToString
-    public static class CreateUser {
+    public static class RegisterUser {
         private final String userId;
         private final String password;
         private final String name;

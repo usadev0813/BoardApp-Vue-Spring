@@ -1,17 +1,19 @@
 package com.study.boardappvuespring.presentation.user;
 
-import com.study.boardappvuespring.domain.user.User;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 public class UserDto {
-    @Getter
-    @Builder
-    @ToString
-    public static class CreateUser {
+
+    @Data
+    public static class RegisterRequest {
         private final String userId;
         private final String password;
+        private final String name;
+    }
+
+    @Data
+    public static class RegisterResponse {
+        private final String userId;
         private final String name;
     }
 }

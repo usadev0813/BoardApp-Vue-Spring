@@ -1,6 +1,7 @@
 package com.study.boardappvuespring.presentation.user;
 
 import com.study.boardappvuespring.domain.user.UserCommand;
+import com.study.boardappvuespring.domain.user.UserInfo;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
@@ -11,5 +12,7 @@ import org.mapstruct.ReportingPolicy;
         unmappedTargetPolicy = ReportingPolicy.ERROR
 )
 public interface UserDtoMapper {
-    UserCommand.CreateUser of(UserDto.CreateUser request);
+    UserCommand.RegisterUser of(UserDto.RegisterRequest request);
+
+    UserDto.RegisterResponse of(UserInfo.RegisterResponse userInfo);
 }
