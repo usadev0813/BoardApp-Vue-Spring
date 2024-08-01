@@ -1,5 +1,5 @@
 ### 1. 유저 생성
-POST {{base}}/user/register
+POST {{base}}/users/register
 Content-Type: application/json
 
 {
