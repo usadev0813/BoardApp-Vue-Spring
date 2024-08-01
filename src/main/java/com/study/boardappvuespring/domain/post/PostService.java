@@ -1,7 +1,11 @@
 package com.study.boardappvuespring.domain.post;
 
-import com.study.boardappvuespring.domain.user.UserInfo;
+import java.util.List;
 
 public interface PostService {
-    PostInfo.RegisterResponse registerPost(PostCommand.RegisterPost post);
+    PostInfo.Main registerPost(PostCommand.RegisterPost post);
+
+    List<PostInfo.Main> getPosts();
+
+    PostInfo.Main getPost(Long postId);
 }
