@@ -1,26 +1,55 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app-container">
+    <AppHeader @navigate="changePage" />
+    <main>
+      <CreatePost v-if="currentPage === 'create'" @post-created="changePageToView" />
+      <ViewPosts v-if="currentPage === 'view'" />
+      <ViewPost v-if="currentPage === 'view-post'" />
+    </main>
+    <AppFooter />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppHeader from './components/AppHeader.vue';
+import AppFooter from './components/AppFooter.vue';
+import CreatePost from './components/CreatePost.vue';
+import ViewPosts from './components/ViewPosts.vue';
+import ViewPost from './components/ViewPost.vue';
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    AppHeader,
+    AppFooter,
+    CreatePost,
+    ViewPosts,
+    ViewPost
+  },
+  data() {
+    return {
+      currentPage: 'view' // 초기 페이지 설정
+    };
+  },
+  methods: {
+    changePage(page) {
+      this.currentPage = page;
+    },
+    changePageToView() {
+      this.currentPage = 'view';
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
 }
 </style>
