@@ -1,55 +1,28 @@
 <template>
-  <div class="app-container">
-    <AppHeader @navigate="changePage" />
-    <main>
-      <CreatePost v-if="currentPage === 'create'" @post-created="changePageToView" />
-      <ViewPosts v-if="currentPage === 'view'" />
-      <ViewPost v-if="currentPage === 'view-post'" />
-    </main>
-    <AppFooter />
+  <div id="app">
+    <AppHeader @navigate="handleNavigation"/>
+    <AppFooter @navigate="handleNavigation"/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import AppHeader from './components/AppHeader.vue';
-import AppFooter from './components/AppFooter.vue';
-import CreatePost from './components/CreatePost.vue';
-import ViewPosts from './components/ViewPosts.vue';
-import ViewPost from './components/ViewPost.vue';
 
 export default {
   components: {
-    AppHeader,
-    AppFooter,
-    CreatePost,
-    ViewPosts,
-    ViewPost
-  },
-  data() {
-    return {
-      currentPage: 'view' // 초기 페이지 설정
-    };
+    AppHeader
   },
   methods: {
-    changePage(page) {
-      this.currentPage = page;
-    },
-    changePageToView() {
-      this.currentPage = 'view';
+    handleNavigation(page) {
+      if (page === 'create') {
+        this.$router.push({ name: 'CreatePost' });
+      } else if (page === 'view') {
+        this.$router.push({ name: 'Home' });
+      } else if (page === 'view-post') {
+        this.$router.push({ name: 'PostDetail', params: { id: this.currentPostId } });
+      }
     }
   }
 };
 </script>
-
-<style>
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1;
-  padding: 20px;
-}
-</style>
