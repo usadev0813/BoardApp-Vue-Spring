@@ -26,7 +26,7 @@ public class Post extends BaseEntity {
     @Column
     private String content;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_idx")
     private User user;
 
