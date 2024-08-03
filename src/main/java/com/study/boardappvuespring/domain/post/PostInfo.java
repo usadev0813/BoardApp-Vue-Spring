@@ -11,8 +11,11 @@ public class PostInfo {
     @Builder
     @ToString
     public static class Main {
+        private final String id;
         private final String title;
         private final String content;
+        private final String writer;
+        private final String createAt;
     }
 
 }
